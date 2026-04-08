@@ -1,803 +1,297 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ChillBabe Studio ✨ Brand & Web Design</title>
-  <meta name="description" content="Fresh brands & scroll-worthy websites for creative entrepreneurs. Let's make your services shine.">
-  
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Parisienne&display=swap" rel="stylesheet">
-  
-  <style>
-    :root {
-      /* 🎨 ChillBabe Color Palette */
-      --bg-primary: #fff9fb;
-      --bg-secondary: #fff0f5;
-      --bg-accent: #ffe4ec;
-      --text-primary: #2d1b2e;
-      --text-secondary: #5a4a5a;
-      --accent-pink: #ff6b9d;
-      --accent-purple: #9d76c9;
-      --accent-coral: #ff8a76;
-      --white: #ffffff;
-      --shadow-sm: 0 2px 8px rgba(157, 118, 201, 0.15);
-      --shadow-md: 0 8px 24px rgba(255, 107, 157, 0.25);
-      --shadow-lg: 0 16px 40px rgba(255, 107, 157, 0.35);
-      --radius-sm: 8px;
-      --radius-md: 16px;
-      --radius-lg: 24px;
-      --radius-full: 9999px;
-      --transition-fast: 150ms ease;
-      --transition-normal: 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
-      --transition-slow: 500ms ease;
-      --font-main: 'Manrope', system-ui, sans-serif;
-      --font-script: 'Parisienne', cursive;
-      --container-max: 1200px;
-      --spacing-sm: 1rem;
-      --spacing-md: 2rem;
-      --spacing-lg: 4rem;
-      --spacing-xl: 6rem;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ULTRA-PREMIUM EXPERIENCE</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@300;500;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-    /* 🧹 Reset & Base */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: var(--font-main);
-      background: var(--bg-primary);
-      color: var(--text-primary);
-      line-height: 1.6;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
-    img { max-width: 100%; height: auto; display: block; }
-    a { text-decoration: none; color: inherit; transition: color var(--transition-fast); }
-    button { font-family: inherit; border: none; background: none; cursor: pointer; }
-    ul { list-style: none; }
+    <style>
+        :root {
+            --bg: #050505;
+            --text: #ffffff;
+            --accent: #d1fa31;
+            --gray: #1a1a1a;
+        }
 
-    /* 🧭 Utility Classes */
-    .container {
-      width: 100%;
-      max-width: var(--container-max);
-      margin: 0 auto;
-      padding: 0 var(--spacing-md);
-    }
-    .section { padding: var(--spacing-xl) 0; }
-    .text-center { text-align: center; }
-    .flex { display: flex; }
-    .flex-col { flex-direction: column; }
-    .items-center { align-items: center; }
-    .justify-center { justify-content: center; }
-    .justify-between { justify-content: space-between; }
-    .gap-1 { gap: var(--spacing-sm); }
-    .gap-2 { gap: var(--spacing-md); }
-    .gap-3 { gap: var(--spacing-lg); }
-    .hidden { display: none !important; }
-    .sr-only {
-      position: absolute; width: 1px; height: 1px;
-      padding: 0; margin: -1px; overflow: hidden;
-      clip: rect(0,0,0,0); white-space: nowrap; border: 0;
-    }
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
 
-    /* 🎀 Typography */
-    h1, h2, h3, h4 {
-      font-weight: 800;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-    }
-    h1 {
-      font-size: clamp(2.5rem, 8vw, 4.5rem);
-      margin-bottom: var(--spacing-md);
-    }
-    h2 {
-      font-size: clamp(2rem, 6vw, 3rem);
-      margin-bottom: var(--spacing-md);
-      position: relative;
-      display: inline-block;
-    }
-    h2::after {
-      content: '';
-      position: absolute;
-      bottom: -8px; left: 50%;
-      transform: translateX(-50%);
-      width: 60px; height: 4px;
-      background: linear-gradient(90deg, var(--accent-pink), var(--accent-purple));
-      border-radius: var(--radius-full);
-    }
-    p { font-size: 1.1rem; color: var(--text-secondary); max-width: 65ch; }
-    .script {
-      font-family: var(--font-script);
-      font-size: clamp(3rem, 10vw, 5rem);
-      color: var(--accent-pink);
-      font-weight: 400;
-      line-height: 1;
-      margin: var(--spacing-sm) 0;
-    }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
 
-    /* 🧭 Navigation */
-    .nav {
-      position: fixed; top: 0; left: 0; width: 100%;
-      padding: 1rem var(--spacing-md);
-      background: rgba(255, 249, 251, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255, 107, 157, 0.1);
-      z-index: 1000;
-      transition: transform var(--transition-normal), box-shadow var(--transition-fast);
-    }
-    .nav.nav-hidden { transform: translateY(-100%); }
-    .nav.scrolled { box-shadow: var(--shadow-sm); }
-    .nav-container {
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .nav-brand {
-      font-weight: 800; font-size: 1.5rem;
-      background: linear-gradient(90deg, var(--accent-pink), var(--accent-purple));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
-    .nav-links {
-      display: flex; gap: var(--spacing-lg);
-      align-items: center;
-    }
-    .nav-link {
-      font-weight: 600; font-size: 1.05rem;
-      position: relative; padding: 0.5rem 0;
-    }
-    .nav-link::after {
-      content: ''; position: absolute; bottom: 0; left: 0;
-      width: 0; height: 2px;
-      background: var(--accent-pink);
-      border-radius: var(--radius-full);
-      transition: width var(--transition-normal);
-    }
-    .nav-link:hover::after { width: 100%; }
-    .nav-cta {
-      background: linear-gradient(90deg, var(--accent-pink), var(--accent-coral));
-      color: white; padding: 0.75rem 1.5rem;
-      border-radius: var(--radius-full);
-      font-weight: 600; box-shadow: var(--shadow-md);
-      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-    }
-    .nav-cta:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-lg);
-    }
-    .nav-cta:active {
-      transform: translateY(1px) scale(0.98);
-      box-shadow: var(--shadow-md);
-    }
-    .nav-toggle {
-      display: none; flex-direction: column;
-      gap: 5px; padding: 0.5rem;
-      background: var(--bg-accent);
-      border-radius: var(--radius-sm);
-    }
-    .nav-toggle span {
-      width: 24px; height: 3px;
-      background: var(--text-primary);
-      border-radius: 2px;
-      transition: transform var(--transition-fast), opacity var(--transition-fast);
-    }
-    .nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
-    .nav-toggle.active span:nth-child(2) { opacity: 0; }
-    .nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+        /* --- 1. Custom Cursor --- */
+        #custom-cursor {
+            position: fixed;
+            width: 15px;
+            height: 15px;
+            background: var(--accent);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: transform 0.1s ease;
+        }
 
-    /* 🌟 Hero Section */
-    .hero {
-      min-height: 100vh;
-      display: flex; align-items: center; justify-content: center;
-      padding: var(--spacing-xl) var(--spacing-md);
-      position: relative; overflow: hidden;
-    }
-    .hero::before {
-      content: ''; position: absolute;
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, var(--bg-accent) 0%, transparent 70%);
-      border-radius: 50%;
-      top: -200px; right: -100px;
-      z-index: -1; opacity: 0.6;
-    }
-    .hero-content {
-      max-width: 700px; text-align: center;
-      position: relative; z-index: 2;
-    }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      background: var(--bg-secondary);
-      padding: 0.4rem 1rem; border-radius: var(--radius-full);
-      font-weight: 600; font-size: 0.95rem;
-      margin-bottom: var(--spacing-md);
-      border: 1px solid rgba(255, 107, 157, 0.2);
-    }
-    .hero-cta-group {
-      display: flex; gap: var(--spacing-sm);
-      justify-content: center; flex-wrap: wrap;
-      margin-top: var(--spacing-lg);
-    }
-    .btn-primary {
-      background: linear-gradient(90deg, var(--accent-pink), var(--accent-purple));
-      color: white; padding: 1rem 2rem;
-      border-radius: var(--radius-full);
-      font-weight: 700; font-size: 1.1rem;
-      box-shadow: var(--shadow-md);
-      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-    }
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-lg);
-    }
-    .btn-primary:active {
-      transform: translateY(1px) scale(0.98);
-      box-shadow: var(--shadow-md);
-    }
-    .btn-secondary {
-      background: var(--white); color: var(--text-primary);
-      padding: 1rem 2rem; border-radius: var(--radius-full);
-      font-weight: 600; border: 2px solid var(--accent-pink);
-      transition: all var(--transition-fast);
-    }
-    .btn-secondary:hover {
-      background: var(--bg-accent);
-      transform: translateY(-2px);
-    }
+        /* --- 2. Navigation --- */
+        .navbar {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
 
-    /* 💼 Services Section */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: var(--spacing-lg);
-      margin-top: var(--spacing-lg);
-    }
-    .service-card {
-      background: var(--white);
-      border-radius: var(--radius-lg);
-      padding: var(--spacing-lg);
-      box-shadow: var(--shadow-sm);
-      transition: transform var(--transition-normal), box-shadow var(--transition-normal);
-      position: relative; overflow: hidden;
-      border: 1px solid rgba(255, 107, 157, 0.1);
-    }
-    .service-card::before {
-      content: ''; position: absolute;
-      top: 0; left: 0; width: 4px; height: 100%;
-      background: linear-gradient(to bottom, var(--accent-pink), var(--accent-purple));
-    }
-    .service-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-lg);
-    }
-    .service-icon {
-      width: 60px; height: 60px;
-      background: var(--bg-accent);
-      border-radius: var(--radius-md);
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: var(--spacing-md);
-      font-size: 1.8rem;
-    }
-    .service-card h3 {
-      font-size: 1.5rem; margin-bottom: var(--spacing-sm);
-    }
-    .service-card p { margin-bottom: var(--spacing-md); }
-    .service-price {
-      font-weight: 700; color: var(--accent-pink);
-      font-size: 1.2rem;
-    }
+        .logo { font-family: 'Syncopate', sans-serif; font-size: 1.2rem; }
 
-    /* 💬 Testimonials */
-    .testimonials {
-      background: var(--bg-secondary);
-      position: relative;
-    }
-    .testimonials::before {
-      content: '"'; position: absolute;
-      font-family: var(--font-script);
-      font-size: 20rem; color: rgba(255, 107, 157, 0.08);
-      top: -40px; left: 50%; transform: translateX(-50%);
-      line-height: 1; z-index: 0;
-    }
-    .testimonial-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: var(--spacing-lg);
-      position: relative; z-index: 1;
-    }
-    .testimonial-card {
-      background: var(--white);
-      border-radius: var(--radius-lg);
-      padding: var(--spacing-lg);
-      box-shadow: var(--shadow-sm);
-      border-left: 4px solid var(--accent-coral);
-    }
-    .testimonial-text {
-      font-style: italic; margin-bottom: var(--spacing-md);
-      position: relative;
-    }
-    .testimonial-text::before {
-      content: '"'; position: absolute;
-      top: -20px; left: -10px;
-      font-family: var(--font-script);
-      font-size: 3rem; color: var(--accent-pink);
-      opacity: 0.3;
-    }
-    .testimonial-author {
-      display: flex; align-items: center; gap: var(--spacing-sm);
-    }
-    .author-avatar {
-      width: 50px; height: 50px;
-      border-radius: 50%;
-      background: var(--bg-accent);
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 700; color: var(--accent-purple);
-    }
+        /* --- 3. Hero Section --- */
+        .hero {
+            height: 120vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
 
-    /* 📩 Newsletter / CTA Section */
-    .cta-section {
-      background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
-      color: white; text-align: center;
-      position: relative; overflow: hidden;
-    }
-    .cta-section::before {
-      content: ''; position: absolute;
-      width: 400px; height: 400px;
-      background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
-      border-radius: 50%;
-      top: -100px; right: -100px;
-    }
-    .cta-section h2::after {
-      background: white; opacity: 0.9;
-    }
-    .cta-section p {
-      color: rgba(255,255,255,0.95);
-      max-width: 600px; margin: 0 auto var(--spacing-lg);
-    }
-    .newsletter-form {
-      display: flex; gap: var(--spacing-sm);
-      max-width: 500px; margin: 0 auto;
-      flex-wrap: wrap; justify-content: center;
-    }
-    .newsletter-input {
-      flex: 1; min-width: 200px;
-      padding: 1rem 1.5rem;
-      border-radius: var(--radius-full);
-      border: none;
-      font-size: 1rem;
-      background: rgba(255,255,255,0.95);
-      color: var(--text-primary);
-    }
-    .newsletter-input::placeholder { color: var(--text-secondary); }
-    .newsletter-btn {
-      background: var(--text-primary);
-      color: white; padding: 1rem 2rem;
-      border-radius: var(--radius-full);
-      font-weight: 700;
-      transition: transform var(--transition-fast);
-    }
-    .newsletter-btn:hover { transform: translateY(-2px); }
+        .hero h1 {
+            font-size: 12vw;
+            text-transform: uppercase;
+            font-family: 'Syncopate', sans-serif;
+            line-height: 0.8;
+            z-index: 2;
+        }
 
-    /* 🦶 Footer */
-    .footer {
-      background: var(--text-primary);
-      color: rgba(255,255,255,0.85);
-      padding: var(--spacing-lg) 0 var(--spacing-md);
-      text-align: center;
-    }
-    .footer-brand {
-      font-weight: 800; font-size: 1.8rem; margin-bottom: var(--spacing-md);
-      background: linear-gradient(90deg, var(--accent-pink), var(--accent-coral));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
-    .footer-links {
-      display: flex; justify-content: center; gap: var(--spacing-lg);
-      margin: var(--spacing-md) 0; flex-wrap: wrap;
-    }
-    .footer-link {
-      font-weight: 500; transition: color var(--transition-fast);
-    }
-    .footer-link:hover { color: var(--accent-pink); }
-    .footer-note {
-      font-size: 0.95rem; opacity: 0.8; margin-top: var(--spacing-md);
-    }
+        /* --- 4. Horizontal Scroll Section --- */
+        .horizontal-container {
+            width: 300%;
+            height: 100vh;
+            display: flex;
+            flex-wrap: nowrap;
+            background: var(--gray);
+        }
 
-    /* ✨ Animation Classes */
-    .fade-reveal {
-      opacity: 0; transform: translateY(30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .fade-reveal.visible {
-      opacity: 1; transform: translateY(0);
-    }
-    .float {
-      animation: float 6s ease-in-out infinite;
-    }
-    .float-delay { animation-delay: -3s; }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
-    }
+        .panel {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 5vw;
+            font-weight: 900;
+            border-right: 1px solid #333;
+        }
 
-    /* 📱 Responsive Breakpoints */
-    @media (max-width: 992px) {
-      :root {
-        --spacing-lg: 3rem;
-        --spacing-xl: 5rem;
-      }
-    }
+        /* --- 5. Project Cards with 3D Effect --- */
+        .work-grid {
+            padding: 10vh 5%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 100px;
+        }
 
-    @media (max-width: 768px) {
-      .nav-links {
-        position: fixed; top: 70px; left: 0; width: 100%;
-        background: var(--white); flex-direction: column;
-        padding: var(--spacing-lg); gap: var(--spacing-md);
-        box-shadow: var(--shadow-md);
-        transform: translateY(-150%);
-        transition: transform var(--transition-normal);
-        z-index: 999;
-      }
-      .nav-links.active { transform: translateY(0); }
-      .nav-toggle { display: flex; }
-      .hero::before { width: 400px; height: 400px; top: -100px; right: -50px; }
-      .hero-cta-group { flex-direction: column; align-items: center; }
-      .btn-primary, .btn-secondary { width: 100%; max-width: 300px; }
-      .section { padding: var(--spacing-lg) 0; }
-    }
+        .project-card {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            background: var(--gray);
+            border-radius: 20px;
+            overflow: hidden;
+            perspective: 1000px; /* For 3D */
+        }
 
-    @media (max-width: 480px) {
-      h1 { font-size: clamp(2rem, 9vw, 3.5rem); }
-      h2 { font-size: clamp(1.75rem, 7vw, 2.5rem); }
-      .script { font-size: clamp(2.5rem, 12vw, 4rem); }
-      .container { padding: 0 var(--spacing-sm); }
-      .service-card { padding: var(--spacing-md); }
-      .newsletter-form { flex-direction: column; }
-      .newsletter-input, .newsletter-btn { width: 100%; }
-    }
+        .project-card img {
+            width: 110%;
+            height: 110%;
+            object-fit: cover;
+            position: absolute;
+            top: -5%; left: -5%;
+            transition: transform 0.1s ease-out;
+        }
 
-    /* 🎯 Focus States for Accessibility */
-    a:focus, button:focus, input:focus {
-      outline: 3px solid var(--accent-purple);
-      outline-offset: 2px;
-    }
-  </style>
+        /* --- 6. Image Trail --- */
+        .trail-img {
+            position: fixed;
+            width: 250px;
+            height: 350px;
+            object-fit: cover;
+            pointer-events: none;
+            z-index: 10;
+            border-radius: 15px;
+            transform: translate(-50%, -50%);
+        }
+
+        /* --- UI Elements --- */
+        .reveal-text { overflow: hidden; }
+        .reveal-text span { display: inline-block; transform: translateY(100%); }
+
+        .footer { height: 100vh; display: flex; align-items: center; justify-content: center; }
+
+        @media (max-width: 768px) {
+            .work-grid { grid-template-columns: 1fr; gap: 50px; }
+            .hero h1 { font-size: 18vw; }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- 🧭 Navigation -->
-  <nav class="nav" id="navbar">
-    <div class="container nav-container">
-      <a href="#" class="nav-brand">ChillBabe ✨</a>
-      
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#services" class="nav-link">Services</a></li>
-        <li><a href="#work" class="nav-link">Work</a></li>
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#testimonials" class="nav-link">Love Notes</a></li>
-        <li><a href="#contact" class="nav-cta">Let's Chat 💬</a></li>
-      </ul>
-    </div>
-  </nav>
+    <div id="custom-cursor"></div>
 
-  <main>
-    <!-- 🌟 Hero Section -->
-    <section class="hero">
-      <div class="container hero-content">
-        <div class="hero-badge fade-reveal">
-          ✨ Now booking for Q2 2026
-        </div>
-        <h1 class="fade-reveal">
-          <span class="script">Hello, gorgeous</span><br>
-          Let's make your brand <span style="background: linear-gradient(90deg, var(--accent-pink), var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">unapologetically YOU</span>
-        </h1>
-        <p class="fade-reveal">
-          I help solo service pros & creative entrepreneurs build scroll-stopping brands and websites that convert browsers into believers. No cookie-cutter templates. Just fresh, strategic, soulful design.
-        </p>
-        <div class="hero-cta-group fade-reveal">
-          <a href="#contact" class="btn-primary">Start Your Project →</a>
-          <a href="#services" class="btn-secondary">See Services</a>
-        </div>
-      </div>
-    </section>
+    <nav class="navbar">
+        <div class="logo">OASIS.</div>
+        <div style="font-size: 0.8rem; font-weight: 500;">SCROLL TO EXPLORE</div>
+    </nav>
 
-    <!-- 💼 Services Section -->
-    <section class="section" id="services">
-      <div class="container">
-        <h2 class="text-center fade-reveal">Services That Spark Joy ✨</h2>
-        <p class="text-center fade-reveal" style="margin: 0 auto var(--spacing-lg);">
-          Pick your perfect package or let's customize something magical together.
-        </p>
-        
-        <div class="services-grid">
-          <!-- Service 1 -->
-          <div class="service-card fade-reveal">
-            <div class="service-icon">🎨</div>
-            <h3>Brand Identity</h3>
-            <p>Logo suite, color palette, typography, brand voice & guidelines that feel like a warm hug for your business.</p>
-            <div class="service-price">Starting at $1,200</div>
-          </div>
-          
-          <!-- Service 2 -->
-          <div class="service-card fade-reveal">
-            <div class="service-icon">💻</div>
-            <h3>Website Design</h3>
-            <p>Custom, conversion-focused websites on Webflow or WordPress that look stunning on every device.</p>
-            <div class="service-price">Starting at $2,500</div>
-          </div>
-          
-          <!-- Service 3 -->
-          <div class="service-card fade-reveal">
-            <div class="service-icon">🚀</div>
-            <h3>Launch Intensive</h3>
-            <p>2-week sprint to refresh your brand + homepage for that big launch moment. Fast, focused, fabulous.</p>
-            <div class="service-price">$1,800 flat</div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <main id="main">
+        <section class="hero">
+            <h1 class="parallax-title" data-speed="-2">CREATIVE</h1>
+            <h1 class="parallax-title" style="color: var(--accent)" data-speed="2">STUDIO</h1>
+            <p style="margin-top: 2rem; opacity: 0.6;">A NEW ERA OF DIGITAL INTERACTIVE EXPERIENCE</p>
+        </section>
 
-    <!-- 💬 Testimonials -->
-    <section class="section testimonials" id="testimonials">
-      <div class="container">
-        <h2 class="text-center fade-reveal">Client Love Notes 💕</h2>
-        
-        <div class="testimonial-grid">
-          <div class="testimonial-card fade-reveal">
-            <p class="testimonial-text">
-              Lou didn't just design my brand—she helped me find my voice. My bookings doubled within a month of launching the new site!
-            </p>
-            <div class="testimonial-author">
-              <div class="author-avatar">SJ</div>
-              <div>
-                <strong>Sarah J.</strong><br>
-                <small>Life Coach • Austin, TX</small>
-              </div>
+        <div class="horizontal-overflow" style="overflow: hidden;">
+            <div class="horizontal-container">
+                <div class="panel">UNMATCHED SPEED</div>
+                <div class="panel" style="background: var(--accent); color: black;">FLUID MOTION</div>
+                <div class="panel">NEXT GENERATION</div>
             </div>
-          </div>
-          
-          <div class="testimonial-card fade-reveal">
-            <p class="testimonial-text">
-              The attention to detail is unreal. Every hover, every transition feels intentional. My clients keep complimenting the experience!
-            </p>
-            <div class="testimonial-author">
-              <div class="author-avatar">MR</div>
-              <div>
-                <strong>Maya R.</strong><br>
-                <small>Photographer • Portland, OR</small>
-              </div>
-            </div>
-          </div>
-          
-          <div class="testimonial-card fade-reveal">
-            <p class="testimonial-text">
-              Working with Lou felt like collaborating with a best friend who *gets it*. She made the whole process fun and stress-free.
-            </p>
-            <div class="testimonial-author">
-              <div class="author-avatar">TL</div>
-              <div>
-                <strong>Taylor L.</strong><br>
-                <small>Copywriter • Remote</small>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
-    </section>
 
-    <!-- 📩 CTA / Newsletter -->
-    <section class="section cta-section" id="contact">
-      <div class="container">
-        <h2 class="fade-reveal">Ready to Shine? ✨</h2>
-        <p class="fade-reveal">
-          Join 2,300+ creatives getting weekly tips on branding, web design, and building a business that feels good.
-        </p>
-        
-        <form class="newsletter-form fade-reveal" onsubmit="handleSubmit(event)">
-          <input 
-            type="email" 
-            class="newsletter-input" 
-            placeholder="Your gorgeous email address" 
-            required
-            aria-label="Email address"
-          >
-          <button type="submit" class="newsletter-btn">Send Me Good Vibes →</button>
-        </form>
-        
-        <p style="margin-top: var(--spacing-md); font-size: 0.95rem; opacity: 0.9;">
-          🎁 Freebie alert: Sign up and get my <strong>"Homepage Navigator Playbook"</strong> (Notion template + ChatGPT prompts) instantly!
-        </p>
-      </div>
-    </section>
-  </main>
+        <section class="work-grid">
+            <div class="project-card" data-parallax="0.05">
+                <img src="https://picsum.photos/800/1000?random=10" alt="Work 1">
+            </div>
+            <div class="project-card" data-parallax="0.08" style="margin-top: 100px;">
+                <img src="https://picsum.photos/800/1000?random=11" alt="Work 2">
+            </div>
+            <div class="project-card" data-parallax="0.04">
+                <img src="https://picsum.photos/800/1000?random=12" alt="Work 3">
+            </div>
+            <div class="project-card" data-parallax="0.06" style="margin-top: 100px;">
+                <img src="https://picsum.photos/800/1000?random=13" alt="Work 4">
+            </div>
+        </section>
 
-  <!-- 🦶 Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-brand">ChillBabe Studio</div>
-      <p>Branding & web design for the boldly authentic.</p>
-      
-      <ul class="footer-links">
-        <li><a href="#" class="footer-link">Instagram</a></li>
-        <li><a href="#" class="footer-link">Pinterest</a></li>
-        <li><a href="#" class="footer-link">TikTok</a></li>
-        <li><a href="#" class="footer-link">Email</a></li>
-      </ul>
-      
-      <p class="footer-note">
-        © <span id="year"></span> ChillBabe Designs. Made with ✨ and lots of iced coffee.<br>
-        <small>Privacy Policy • Terms of Service</small>
-      </p>
-    </div>
-  </footer>
+        <section class="footer">
+            <h2 style="font-size: 8vw; font-family: 'Syncopate';">LET'S CREATE.</h2>
+        </section>
+    </main>
 
-  <!-- 📦 Dependencies -->
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+    <div id="trail-container"></div>
 
-  <script>
-    // 🎯 Initialize Lenis Smooth Scroll
-    const lenis = new Lenis({
-      duration: 1.1,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-      touchMultiplier: 2
-    });
-
-    // Sync Lenis with GSAP ScrollTrigger
-    lenis.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add((time) => lenis.raf(time * 1000));
-    gsap.ticker.lagSmoothing(0);
-    gsap.registerPlugin(ScrollTrigger);
-
-    // 🧭 Mobile Navigation Toggle
-    const navToggle = document.getElementById('navToggle');
-    const navLinks = document.getElementById('navLinks');
-    const navbar = document.getElementById('navbar');
-    
-    navToggle.addEventListener('click', () => {
-      const expanded = navToggle.getAttribute('aria-expanded') === 'true' || false;
-      navToggle.classList.toggle('active');
-      navLinks.classList.toggle('active');
-      navToggle.setAttribute('aria-expanded', !expanded);
-      document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
-    });
-
-    // Close mobile menu when clicking a link
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        navToggle.classList.remove('active');
-        navLinks.classList.remove('active');
-        navToggle.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-      });
-    });
-
-    // 🧭 Sticky Nav: Hide on scroll down, show on scroll up with bounce
-    let lastScroll = 0;
-    lenis.on('scroll', ({ scroll }) => {
-      // Add scrolled class for shadow
-      if (scroll > 50) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
-      
-      // Hide/show logic
-      if (scroll > lastScroll && scroll > 150) {
-        navbar.classList.add('nav-hidden');
-      } else {
-        navbar.classList.remove('nav-hidden');
-      }
-      lastScroll = scroll;
-    });
-
-    // ✨ Scroll-Triggered Fade-In Reveal (75% viewport threshold)
-    const fadeElements = document.querySelectorAll('.fade-reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
+    <script>
+        // --- 1. Init Lenis Smooth Scroll ---
+        const lenis = new Lenis({
+            duration: 1.5,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+        });
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
         }
-      });
-    }, { threshold: 0.75 });
-    
-    fadeElements.forEach(el => observer.observe(el));
+        requestAnimationFrame(raf);
 
-    // 🎀 Hero Text Parallax on Scroll (subtle)
-    gsap.utils.toArray('.hero h1').forEach(text => {
-      gsap.fromTo(text, 
-        { y: 30, opacity: 0.95 },
-        {
-          y: 0,
-          opacity: 1,
-          scrollTrigger: {
-            trigger: '.hero',
-            start: 'top 80%',
-            end: 'top 30%',
-            scrub: 1
-          }
-        }
-      );
-    });
+        // --- 2. Custom Cursor Logic ---
+        const cursor = document.getElementById('custom-cursor');
+        window.addEventListener('mousemove', (e) => {
+            gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.5, ease: "power3.out" });
+        });
 
-    // 🎀 Service Cards: Staggered Float on Hover + Scroll Reveal
-    gsap.utils.toArray('.service-card').forEach((card, i) => {
-      // Initial reveal
-      gsap.from(card, {
-        y: 40,
-        opacity: 0,
-        duration: 0.6,
-        scrollTrigger: {
-          trigger: card,
-          start: 'top 85%',
-          toggleActions: 'play none none none'
-        }
-      });
-      
-      // Hover micro-interaction (lift + shadow)
-      card.addEventListener('mouseenter', () => {
-        gsap.to(card, { y: -8, duration: 0.3, ease: 'power2.out' });
-      });
-      card.addEventListener('mouseleave', () => {
-        gsap.to(card, { y: 0, duration: 0.3, ease: 'power2.in' });
-      });
-    });
+        // --- 3. Hero Text Parallax ---
+        gsap.utils.toArray(".parallax-title").forEach(title => {
+            const speed = title.getAttribute('data-speed');
+            gsap.to(title, {
+                scrollTrigger: {
+                    trigger: ".hero",
+                    scrub: true
+                },
+                y: speed * 50,
+                ease: "none"
+            });
+        });
 
-    // 💬 Testimonial Cards: Subtle Scale on Hover
-    gsap.utils.toArray('.testimonial-card').forEach(card => {
-      card.addEventListener('mouseenter', () => {
-        gsap.to(card, { scale: 1.02, duration: 0.3, ease: 'power2.out' });
-      });
-      card.addEventListener('mouseleave', () => {
-        gsap.to(card, { scale: 1, duration: 0.3, ease: 'power2.in' });
-      });
-    });
+        // --- 4. Horizontal Scroll Section ---
+        const sections = gsap.utils.toArray(".panel");
+        gsap.to(sections, {
+            xPercent: -100 * (sections.length - 1),
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".horizontal-container",
+                pin: true,
+                scrub: 1,
+                end: () => "+=" + document.querySelector(".horizontal-container").offsetWidth
+            }
+        });
 
-    // 📩 Newsletter Form Handling
-    function handleSubmit(e) {
-      e.preventDefault();
-      const email = e.target.querySelector('input').value;
-      const btn = e.target.querySelector('button');
-      const originalText = btn.innerHTML;
-      
-      // Micro-interaction: button press
-      gsap.to(btn, { 
-        scale: 0.95, 
-        duration: 0.1, 
-        yoyo: true, 
-        repeat: 1,
-        onComplete: () => {
-          btn.innerHTML = '✨ Sent! Check your inbox';
-          btn.style.background = 'linear-gradient(90deg, #4ade80, #22c55e)';
-          e.target.reset();
-          
-          // Reset after 3 seconds
-          setTimeout(() => {
-            btn.innerHTML = originalText;
-            btn.style.background = '';
-          }, 3000);
-        }
-      });
-    }
+        // --- 5. 3D Mouse Parallax for Cards ---
+        document.querySelectorAll('.project-card').forEach(card => {
+            const img = card.querySelector('img');
+            card.addEventListener('mousemove', (e) => {
+                const { left, top, width, height } = card.getBoundingClientRect();
+                const x = (e.clientX - left) / width - 0.5;
+                const y = (e.clientY - top) / height - 0.5;
+                
+                gsap.to(img, {
+                    x: x * 40,
+                    y: y * 40,
+                    rotationX: -y * 10,
+                    rotationY: x * 10,
+                    duration: 0.6,
+                    ease: "power2.out"
+                });
+            });
 
-    // 🎀 Footer Year Auto-Update
-    document.getElementById('year').textContent = new Date().getFullYear();
+            card.addEventListener('mouseleave', () => {
+                gsap.to(img, { x: 0, y: 0, rotationX: 0, rotationY: 0, duration: 0.6 });
+            });
+        });
 
-    // 🎯 Accessibility: Close mobile menu on Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && navLinks.classList.contains('active')) {
-        navToggle.click();
-      }
-    });
+        // --- 6. Dynamic Image Trail ---
+        const images = [
+            "https://picsum.photos/400/600?v=1",
+            "https://picsum.photos/400/600?v=2",
+            "https://picsum.photos/400/600?v=3"
+        ];
+        let i = 0;
+        window.addEventListener('mousemove', (e) => {
+            if (Math.abs(e.movementX) + Math.abs(e.movementY) > 25) {
+                const img = document.createElement('img');
+                img.src = images[i % images.length];
+                img.className = 'trail-img';
+                img.style.left = e.clientX + 'px';
+                img.style.top = e.clientY + 'px';
+                document.getElementById('trail-container').appendChild(img);
+                i++;
 
-    // 🎯 Prevent layout shift: Set Lenis root after DOM load
-    document.addEventListener('DOMContentLoaded', () => {
-      lenis.start();
-    });
-  </script>
+                gsap.fromTo(img, 
+                    { scale: 0, rotation: gsap.utils.random(-25, 25) }, 
+                    { scale: 1, duration: 0.5, ease: "back.out(1.7)" }
+                );
+                gsap.to(img, { 
+                    opacity: 0, scale: 0.5, y: -100, duration: 1, delay: 0.5, 
+                    onComplete: () => img.remove() 
+                });
+            }
+        });
+
+        // --- 7. Reveal Animations ---
+        gsap.from(".hero p", {
+            scrollTrigger: ".hero",
+            y: 30,
+            opacity: 0,
+            duration: 1,
+            delay: 0.5
+        });
+
+    </script>
 </body>
 </html>
