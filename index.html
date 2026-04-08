@@ -3,143 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ULTRA-PREMIUM EXPERIENCE</title>
+    <title>Elite Portfolio | 2026</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@300;500;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
     <style>
         :root {
-            --bg: #050505;
+            --bg: #080808;
             --text: #ffffff;
             --accent: #d1fa31;
-            --gray: #1a1a1a;
+            --secondary: #161616;
+            /* Fluid Typography: min 40px, max 150px based on screen width */
+            --h1-size: clamp(2.5rem, 10vw + 1rem, 10rem);
+            --p-size: clamp(1rem, 1.2vw, 1.25rem);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             background-color: var(--bg);
             color: var(--text);
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        /* --- 1. Custom Cursor --- */
+        /* Hide custom cursor on touch devices */
         #custom-cursor {
             position: fixed;
-            width: 15px;
-            height: 15px;
+            width: 20px;
+            height: 20px;
             background: var(--accent);
             border-radius: 50%;
             pointer-events: none;
             z-index: 9999;
             mix-blend-mode: difference;
-            transition: transform 0.1s ease;
+            display: none;
         }
+        @media (pointer: fine) { #custom-cursor { display: block; } }
 
-        /* --- 2. Navigation --- */
+        /* Navigation */
         .navbar {
             position: fixed;
             top: 0; width: 100%;
-            padding: 2rem 5%;
+            padding: 1.5rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
+            background: rgba(8,8,8,0.8);
+            backdrop-filter: blur(10px);
         }
 
-        .logo { font-family: 'Syncopate', sans-serif; font-size: 1.2rem; }
+        .logo { font-family: 'Syncopate', sans-serif; font-size: 1.1rem; letter-spacing: 2px; }
 
-        /* --- 3. Hero Section --- */
+        /* Hero Section */
         .hero {
-            height: 120vh;
+            min-height: 100vh;
             display: flex;
-            justify-content: center;
-            align-items: center;
             flex-direction: column;
-            text-align: center;
+            justify-content: center;
+            padding: 0 5%;
+            padding-top: 100px;
         }
 
         .hero h1 {
-            font-size: 12vw;
-            text-transform: uppercase;
+            font-size: var(--h1-size);
             font-family: 'Syncopate', sans-serif;
-            line-height: 0.8;
-            z-index: 2;
+            line-height: 0.9;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
         }
 
-        /* --- 4. Horizontal Scroll Section --- */
-        .horizontal-container {
-            width: 300%;
-            height: 100vh;
-            display: flex;
-            flex-wrap: nowrap;
-            background: var(--gray);
+        .hero p {
+            max-width: 600px;
+            font-size: var(--p-size);
+            color: #aaa;
+            margin-bottom: 2rem;
         }
 
-        .panel {
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 5vw;
-            font-weight: 900;
-            border-right: 1px solid #333;
-        }
-
-        /* --- 5. Project Cards with 3D Effect --- */
-        .work-grid {
-            padding: 10vh 5%;
+        /* About Section (New) */
+        .about {
+            padding: 15vh 5%;
+            background: var(--secondary);
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 100px;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
         }
-
-        .project-card {
-            position: relative;
-            width: 100%;
-            height: 600px;
-            background: var(--gray);
-            border-radius: 20px;
-            overflow: hidden;
-            perspective: 1000px; /* For 3D */
-        }
-
-        .project-card img {
-            width: 110%;
-            height: 110%;
-            object-fit: cover;
-            position: absolute;
-            top: -5%; left: -5%;
-            transition: transform 0.1s ease-out;
-        }
-
-        /* --- 6. Image Trail --- */
-        .trail-img {
-            position: fixed;
-            width: 250px;
-            height: 350px;
-            object-fit: cover;
-            pointer-events: none;
-            z-index: 10;
-            border-radius: 15px;
-            transform: translate(-50%, -50%);
-        }
-
-        /* --- UI Elements --- */
-        .reveal-text { overflow: hidden; }
-        .reveal-text span { display: inline-block; transform: translateY(100%); }
-
-        .footer { height: 100vh; display: flex; align-items: center; justify-content: center; }
 
         @media (max-width: 768px) {
-            .work-grid { grid-template-columns: 1fr; gap: 50px; }
-            .hero h1 { font-size: 18vw; }
+            .about { grid-template-columns: 1fr; gap: 2rem; }
         }
+
+        /* Portfolio Work Grid */
+        .work-grid {
+            padding: 10vh 5%;
+            display: flex;
+            flex-direction: column;
+            gap: 15vh;
+        }
+
+        .project-row {
+            display: flex;
+            gap: 5%;
+            align-items: center;
+        }
+
+        .project-row:nth-child(even) { flex-direction: row-reverse; }
+
+        .project-img-wrapper {
+            flex: 1;
+            height: clamp(300px, 50vh, 600px);
+            overflow: hidden;
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .project-img-wrapper img {
+            width: 100%;
+            height: 120%; /* For parallax */
+            object-fit: cover;
+            filter: saturate(0);
+            transition: filter 0.6s ease;
+        }
+
+        .project-img-wrapper:hover img { filter: saturate(1); }
+
+        .project-info { flex: 1; }
+        .project-info h3 { font-size: 3rem; font-family: 'Syncopate'; margin-bottom: 1rem; }
+
+        @media (max-width: 768px) {
+            .project-row, .project-row:nth-child(even) { flex-direction: column; text-align: left; }
+            .project-img-wrapper { width: 100%; }
+            .project-info h3 { font-size: 2rem; margin-top: 1.5rem; }
+        }
+
+        /* Horizontal Scroll for Mobile/Desktop */
+        .horizontal-wrap {
+            height: 100vh;
+            overflow: hidden;
+            background: var(--accent);
+            color: #000;
+            display: flex;
+            align-items: center;
+        }
+
+        .scroll-text {
+            font-size: 15vw;
+            font-family: 'Syncopate';
+            white-space: nowrap;
+            display: flex;
+            gap: 50px;
+        }
+
+        .footer {
+            padding: 10vh 5%;
+            text-align: center;
+            border-top: 1px solid #333;
+        }
+
+        /* CTA Button */
+        .btn {
+            display: inline-block;
+            padding: 1.2rem 2.5rem;
+            background: var(--accent);
+            color: #000;
+            text-decoration: none;
+            font-weight: 900;
+            border-radius: 100px;
+            transition: transform 0.3s ease;
+        }
+        .btn:hover { transform: scale(1.05); }
+
     </style>
 </head>
 <body>
@@ -147,52 +186,74 @@
     <div id="custom-cursor"></div>
 
     <nav class="navbar">
-        <div class="logo">OASIS.</div>
-        <div style="font-size: 0.8rem; font-weight: 500;">SCROLL TO EXPLORE</div>
+        <div class="logo">OASIS.STUDIO</div>
+        <div class="contact-link" style="font-weight: 700; color: var(--accent);">HIRE ME</div>
     </nav>
 
     <main id="main">
         <section class="hero">
-            <h1 class="parallax-title" data-speed="-2">CREATIVE</h1>
-            <h1 class="parallax-title" style="color: var(--accent)" data-speed="2">STUDIO</h1>
-            <p style="margin-top: 2rem; opacity: 0.6;">A NEW ERA OF DIGITAL INTERACTIVE EXPERIENCE</p>
+            <h1 class="reveal-up">WE BUILD<br><span style="color: var(--accent);">DIGITAL</span><br>EMPIRES.</h1>
+            <p class="reveal-up">A full-service creative agency specializing in high-end interactive experiences for brands that refuse to be ordinary.</p>
+            <a href="#" class="btn reveal-up">EXPLORE WORK</a>
         </section>
 
-        <div class="horizontal-overflow" style="overflow: hidden;">
-            <div class="horizontal-container">
-                <div class="panel">UNMATCHED SPEED</div>
-                <div class="panel" style="background: var(--accent); color: black;">FLUID MOTION</div>
-                <div class="panel">NEXT GENERATION</div>
+        <section class="about">
+            <div class="project-img-wrapper reveal-up">
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80" alt="About" class="parallax-img">
+            </div>
+            <div class="about-text">
+                <h2 style="font-family: 'Syncopate'; margin-bottom: 1rem;">PHILOSOPHY</h2>
+                <p>We believe that websites shouldn't just be viewed—they should be felt. Our approach combines mathematical precision with artistic chaos.</p>
+            </div>
+        </section>
+
+        <section class="work-grid">
+            <div class="project-row">
+                <div class="project-img-wrapper reveal-up">
+                    <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1200&q=80" alt="Work 1" class="parallax-img">
+                </div>
+                <div class="project-info reveal-up">
+                    <h3>01. ARCA</h3>
+                    <p>Branding & Web Experience for a Luxury Architecture firm based in Milan.</p>
+                </div>
+            </div>
+
+            <div class="project-row">
+                <div class="project-img-wrapper reveal-up">
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80" alt="Work 2" class="parallax-img">
+                </div>
+                <div class="project-info reveal-up">
+                    <h3>02. VIRTUE</h3>
+                    <p>A crypto-native aesthetic built for the next generation of finance.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="horizontal-wrap">
+            <div class="scroll-text">
+                <span>INTERACTIVE</span>
+                <span>•</span>
+                <span>IMMERSIVE</span>
+                <span>•</span>
+                <span>FUTURISTIC</span>
+                <span>•</span>
+                <span>INTERACTIVE</span>
             </div>
         </div>
 
-        <section class="work-grid">
-            <div class="project-card" data-parallax="0.05">
-                <img src="https://picsum.photos/800/1000?random=10" alt="Work 1">
-            </div>
-            <div class="project-card" data-parallax="0.08" style="margin-top: 100px;">
-                <img src="https://picsum.photos/800/1000?random=11" alt="Work 2">
-            </div>
-            <div class="project-card" data-parallax="0.04">
-                <img src="https://picsum.photos/800/1000?random=12" alt="Work 3">
-            </div>
-            <div class="project-card" data-parallax="0.06" style="margin-top: 100px;">
-                <img src="https://picsum.photos/800/1000?random=13" alt="Work 4">
-            </div>
-        </section>
-
-        <section class="footer">
-            <h2 style="font-size: 8vw; font-family: 'Syncopate';">LET'S CREATE.</h2>
-        </section>
+        <footer class="footer">
+            <h2 style="font-size: 3rem; font-family: 'Syncopate'; margin-bottom: 2rem;">READY TO START?</h2>
+            <p style="margin-bottom: 3rem;">hello@oasis-studio.com</p>
+            <p>© 2026 OASIS STUDIO — ALL RIGHTS RESERVED</p>
+        </footer>
     </main>
 
-    <div id="trail-container"></div>
-
     <script>
-        // --- 1. Init Lenis Smooth Scroll ---
+        // 1. Initialize Lenis (Smooth Scroll)
         const lenis = new Lenis({
-            duration: 1.5,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+            duration: 1.2,
+            smoothWheel: true,
+            touchMultiplier: 2 // Makes mobile scroll feel better
         });
         function raf(time) {
             lenis.raf(time);
@@ -200,98 +261,64 @@
         }
         requestAnimationFrame(raf);
 
-        // --- 2. Custom Cursor Logic ---
+        // 2. Custom Cursor (Mouse only)
         const cursor = document.getElementById('custom-cursor');
         window.addEventListener('mousemove', (e) => {
-            gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.5, ease: "power3.out" });
+            gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.3, ease: "power2.out" });
         });
 
-        // --- 3. Hero Text Parallax ---
-        gsap.utils.toArray(".parallax-title").forEach(title => {
-            const speed = title.getAttribute('data-speed');
-            gsap.to(title, {
+        // 3. Reveal Animations (Staggered Fade-In)
+        gsap.utils.toArray(".reveal-up").forEach((el) => {
+            gsap.from(el, {
                 scrollTrigger: {
-                    trigger: ".hero",
-                    scrub: true
+                    trigger: el,
+                    start: "top 90%",
                 },
-                y: speed * 50,
+                y: 50,
+                opacity: 0,
+                duration: 1,
+                ease: "power3.out"
+            });
+        });
+
+        // 4. Image Parallax (Responsive alternative to Trail)
+        gsap.utils.toArray(".parallax-img").forEach((img) => {
+            gsap.to(img, {
+                scrollTrigger: {
+                    trigger: img,
+                    scrub: true,
+                    start: "top bottom",
+                    end: "bottom top"
+                },
+                yPercent: -20, // Moves the image slightly within its container
                 ease: "none"
             });
         });
 
-        // --- 4. Horizontal Scroll Section ---
-        const sections = gsap.utils.toArray(".panel");
-        gsap.to(sections, {
-            xPercent: -100 * (sections.length - 1),
+        // 5. Marquee Scrolling Effect
+        gsap.to(".scroll-text", {
+            xPercent: -50,
             ease: "none",
             scrollTrigger: {
-                trigger: ".horizontal-container",
-                pin: true,
-                scrub: 1,
-                end: () => "+=" + document.querySelector(".horizontal-container").offsetWidth
+                trigger: ".horizontal-wrap",
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 1
             }
         });
 
-        // --- 5. 3D Mouse Parallax for Cards ---
-        document.querySelectorAll('.project-card').forEach(card => {
-            const img = card.querySelector('img');
-            card.addEventListener('mousemove', (e) => {
-                const { left, top, width, height } = card.getBoundingClientRect();
-                const x = (e.clientX - left) / width - 0.5;
-                const y = (e.clientY - top) / height - 0.5;
-                
-                gsap.to(img, {
-                    x: x * 40,
-                    y: y * 40,
-                    rotationX: -y * 10,
-                    rotationY: x * 10,
-                    duration: 0.6,
-                    ease: "power2.out"
-                });
-            });
-
-            card.addEventListener('mouseleave', () => {
-                gsap.to(img, { x: 0, y: 0, rotationX: 0, rotationY: 0, duration: 0.6 });
-            });
-        });
-
-        // --- 6. Dynamic Image Trail ---
-        const images = [
-            "https://picsum.photos/400/600?v=1",
-            "https://picsum.photos/400/600?v=2",
-            "https://picsum.photos/400/600?v=3"
-        ];
-        let i = 0;
-        window.addEventListener('mousemove', (e) => {
-            if (Math.abs(e.movementX) + Math.abs(e.movementY) > 25) {
-                const img = document.createElement('img');
-                img.src = images[i % images.length];
-                img.className = 'trail-img';
-                img.style.left = e.clientX + 'px';
-                img.style.top = e.clientY + 'px';
-                document.getElementById('trail-container').appendChild(img);
-                i++;
-
-                gsap.fromTo(img, 
-                    { scale: 0, rotation: gsap.utils.random(-25, 25) }, 
-                    { scale: 1, duration: 0.5, ease: "back.out(1.7)" }
-                );
-                gsap.to(img, { 
-                    opacity: 0, scale: 0.5, y: -100, duration: 1, delay: 0.5, 
-                    onComplete: () => img.remove() 
-                });
+        // 6. Navigation Logic
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            const nav = document.querySelector('.navbar');
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                nav.style.transform = "translateY(-100%)";
+            } else {
+                nav.style.transform = "translateY(0)";
             }
+            lastScroll = currentScroll;
         });
-
-        // --- 7. Reveal Animations ---
-        gsap.from(".hero p", {
-            scrollTrigger: ".hero",
-            y: 30,
-            opacity: 0,
-            duration: 1,
-            delay: 0.5
-        });
-
     </script>
 </body>
 </html>
