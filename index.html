@@ -1,183 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cosmic Hero Section</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<section class="hero-maker">
+  <div class="hero-overlay"></div>
+  <header class="hero-header">MEET THE MAKER</header>
+  <button class="hero-cta">Get Started</button>
+</section>
 
 <style>
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: #f6f1e9;
-  overflow-x: hidden;
-}
-
-/* HERO */
-.hero {
+.hero-maker {
   position: relative;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* GRID BACKGROUND */
-.hero::before {
-  content: "";
-  position: absolute;
   width: 100%;
-  height: 100%;
-  background-image: linear-gradient(#ddd 1px, transparent 1px),
-                    linear-gradient(90deg, #ddd 1px, transparent 1px);
-  background-size: 60px 60px;
-  opacity: 0.2;
-}
-
-/* HEADER */
-.header {
-  position: absolute;
-  top: 40px;
-  font-size: 32px;
-  letter-spacing: 4px;
-  color: #333;
-  text-shadow: 0 0 10px rgba(255,255,255,0.6);
-}
-
-/* CHARACTER */
-.character {
-  width: 260px;
-  height: 260px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #fff, #ddd);
+  min-height: 100vh;
+  background: #fdfbf7; /* Light-cream fallback */
+  background-image: url('./generated-hero.png'); /* Replace with your AI image */
+  background-size: cover;
+  background-position: center;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  font-size: 120px;
-  box-shadow: 0 0 40px rgba(255,255,255,0.9),
-              0 0 80px rgba(255,200,100,0.3);
-  animation: float 4s ease-in-out infinite;
-  z-index: 2;
+  padding: 4rem 2rem;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
-/* FLOAT ANIMATION */
-@keyframes float {
-  0%,100% { transform: translateY(0px); }
-  50% { transform: translateY(-15px); }
-}
-
-/* LIGHT TRAILS */
-svg {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-path {
-  fill: none;
-  stroke-width: 2;
-  stroke-dasharray: 300;
-  stroke-dashoffset: 300;
-  animation: draw 4s infinite ease-in-out;
-}
-
-@keyframes draw {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-/* TEXT CLUSTERS */
-.cluster {
-  position: absolute;
-  font-weight: 500;
-  font-size: 18px;
+.hero-header {
+  font-family: 'Cinzel', 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 4rem);
+  color: #ffffff;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.7), 0 0 30px rgba(180, 180, 220, 0.4);
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  margin-top: 2rem;
   text-align: center;
 }
 
-/* Glow effects */
-.glow-blue {
-  color: #7ecbff;
-  text-shadow: 0 0 10px #7ecbff, 0 0 20px #7ecbff;
-}
-
-.glow-purple {
-  color: #c9a6ff;
-  text-shadow: 0 0 10px #c9a6ff, 0 0 20px #c9a6ff;
-}
-
-.glow-gold {
-  color: #ffd27a;
-  text-shadow: 0 0 15px #ffd27a, 0 0 30px #ffb347;
-  font-size: 22px;
-}
-
-.glow-mix {
-  color: #7ef9c6;
-  text-shadow: 0 0 10px #7ef9c6, 0 0 20px #ffd27a;
-}
-
-/* POSITIONING */
-.designer { top: 20%; left: 20%; }
-.introvert { top: 28%; left: 30%; }
-.brave { top: 10%; }
-.uiux { top: 20%; right: 20%; }
-.web { top: 35%; right: 18%; }
-
-/* CTA BUTTON */
-.cta {
-  position: absolute;
-  bottom: 40px;
-  padding: 14px 30px;
-  border-radius: 30px;
-  background: rgba(255,255,255,0.4);
-  backdrop-filter: blur(10px);
-  border: none;
-  font-size: 16px;
+.hero-cta {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-family: sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
   cursor: pointer;
-  box-shadow: 0 0 20px rgba(255,255,255,0.6);
-  transition: 0.3s;
+  box-shadow: 0 0 20px rgba(255, 220, 180, 0.3), inset 0 0 10px rgba(255, 255, 255, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-bottom: 3rem;
+  letter-spacing: 0.05em;
 }
 
-.cta:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 30px rgba(255,200,100,0.9);
+.hero-cta:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 0 30px rgba(255, 220, 180, 0.6);
 }
 </style>
-</head>
-
-<body>
-
-<div class="hero">
-
-  <div class="header">MEET THE MAKER</div>
-
-  <!-- CHARACTER -->
-  <div class="character">👩🏽‍🦱</div>
-
-  <!-- COSMIC TRAILS -->
-  <svg>
-    <path d="M500 300 Q300 150 200 200" stroke="#7ecbff"/>
-    <path d="M500 300 Q350 100 450 80" stroke="#ffd27a"/>
-    <path d="M500 300 Q700 200 800 250" stroke="#7ef9c6"/>
-    <path d="M500 300 Q700 100 850 100" stroke="#7ecbff"/>
-    <path d="M500 300 Q300 350 200 400" stroke="#c9a6ff"/>
-  </svg>
-
-  <!-- TEXT CLUSTERS -->
-  <div class="cluster designer glow-blue">designer ✦</div>
-  <div class="cluster introvert glow-purple">introvert ✦</div>
-  <div class="cluster brave glow-gold">brave ✦</div>
-  <div class="cluster uiux glow-blue">ui ux developer ✦</div>
-  <div class="cluster web glow-mix">websites maker ✦</div>
-
-  <!-- CTA -->
-  <button class="cta">Explore My Work</button>
-
-</div>
-
-</body>
-</html>
